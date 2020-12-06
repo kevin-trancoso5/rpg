@@ -8,4 +8,7 @@ public abstract class Obstacle extends Entity {
 		super(name,hp,pos);
 	}
 	
+	public boolean isDead() {
+		return !isAlive;
+	}
 }

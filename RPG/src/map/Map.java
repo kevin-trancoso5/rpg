@@ -53,6 +53,9 @@ public class Map {
 				if(e.getClass().getSimpleName().equals("Gillou")) {
 					return "B";
 				}
+				if(e.getClass().getSimpleName().equals("Tree")) {
+					return "T";
+				}
 			}
 		}
 		if(x==1 && y==2) {

@@ -17,12 +17,12 @@ public class Shop {
 	public Weapon getChoice() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Choisissez une arme à acheter");
-		int i = in.nextInt();
-		while(i<1 || i>weapons.length)
+		int choice = in.nextInt();
+		while(choice<1 || choice>weapons.length)
 		{
 			System.out.println("Erreur de saisie");
-			i = in.nextInt();
+			choice = in.nextInt();
 		}
-		return weapons[i-1];
+		return weapons[choice-1];
 	}
 }

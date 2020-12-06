@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import map.Position;
@@ -33,13 +34,25 @@ public abstract class Player extends Entity {
 		for(int i=0;i<weapons.size();i++) {
 			System.out.println((i+1)+") "+weapons.get(i));
 		}
-		int choice = in.nextInt();
-		if ((choice-1) < weapons.size() && (choice-1) >= 0) {
-			weapon=weapons.get(choice-1);
-		}
-		else {
-			System.out.println("Vous n'avez pas changé d'arme");
-		}
+	
+		boolean error;
+		int choice = 0;
+		do {
+			error = false;
+		    try {
+		    	choice = in.nextInt();
+		    	if (choice > weapons.size() || choice <= 0) {
+		    		error = true;
+		    		System.out.println("Erreur de saisie");
+		    	}
+		    } catch (InputMismatchException e) {
+		    	System.out.println("Erreur de saisie");
+		    	in.next();
+		    	error = true;
+		    }
+		} while (error);
+		weapon=weapons.get(choice-1);
+		System.out.println("Vous avez bien équipé "+weapon);
 	}
 	public void buyWeapon(Shop s) {
 		s.showShop();
